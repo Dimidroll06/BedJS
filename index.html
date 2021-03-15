@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./lib/logo.png" type="image/x-icon">
+    <title>BedJS test</title>
+
+    <!-- BED JS -->
+    <script src="./lib/Bed.js"></script>
+</head>
+<body>
+    <script>
+        const Bed = new BedJS()
+        document.body.appendChild(Bed.domElement)
+
+        const layer1 = new Bed.layer()
+
+        let image = new Bed.image(layer1)
+        
+        Bed.everyTick(()=>{
+            image.x++
+        })
+
+        Bed.start()
+
+    </script>
+</body>
+</html>
