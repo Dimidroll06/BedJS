@@ -8,6 +8,14 @@
 
 # English
 
-en
+##Enginie
+
+BedJS is written to a variable this way
+
+'''js
+
+var Bed = new BedJS({})
+
+'''
 
 # Russian
