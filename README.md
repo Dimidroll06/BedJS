@@ -12,10 +12,8 @@
 
 BedJS is written to a variable this way
 
-'''js
-
+```js
 var Bed = new BedJS({})
-
-'''
+```
 
 # Russian
