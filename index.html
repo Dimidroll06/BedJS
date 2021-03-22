@@ -19,28 +19,31 @@
 
         const layer1 = new Bed.layer()
 
-        let image = new Bed.image(layer1)
-        let text = new Bed.text(layer1)
+        let text = new Bed.text(layer1, {
+            words: '0.4 TileMaps!'
+        })
         
 
-        let animatedImgae = new Bed.image(layer1)
-        animatedImgae.spriteSheet('./lib/logo_sheet.png')
-
-        animatedImgae.newAnimation('red', [ [0,0] ]);
-        animatedImgae.newAnimation('blue', [ [1,0] ]);
-        animatedImgae.newAnimation('green', [ [0,1] ]);
-        animatedImgae.newAnimation('orange', [ [1,1] ]);
-        animatedImgae.newAnimation('rgb', [ [0,0], [0,1], [1,0] ], 15);
-
-
-        animatedImgae.setAnimation('rgb');
-
-        Bed.everyTick(()=>{
-            image.x++
+        let TileMap = new Bed.tilemap(layer1,
+        {
+            tiles:[
+                [Bed.vec2(0,1), Bed.vec2(0,1), Bed.vec2(0,1), Bed.vec2(0,1)],
+                [Bed.vec2(1,0), Bed.vec2(1,0), Bed.vec2(1,0), Bed.vec2(1,0)],
+                [Bed.vec2(0,0), Bed.vec2(0,0), Bed.vec2(0,0), Bed.vec2(0,0)],
+                [Bed.vec2(1,1), Bed.vec2(1,1), Bed.vec2(1,1), Bed.vec2(1,1)]
+            ],
+            y:25
         })
 
+        
+        Bed.everyTick(()=>{
+            console.log('tick')
+        })
+        
+        
+      
         Bed.start()
 
-    </script>
+        </script>
 </body>
 </html>

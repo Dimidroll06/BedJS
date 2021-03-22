@@ -6,9 +6,8 @@
  [English](https://github.com/Dimidroll06/BedJS/blob/main/README.md#English)
 
 
-BedJS 0.3:
-* Image animations
-* Console notification that BedJS started
+BedJS 0.4:
+* Added TileMaps
 * Fixed Bugs 
 
 
