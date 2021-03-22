@@ -12,7 +12,9 @@
 </head>
 <body>
     <script>
-        const Bed = new BedJS()
+        const Bed = new BedJS({
+            FPS:1
+        })
         document.body.appendChild(Bed.domElement)
 
         const layer1 = new Bed.layer()
@@ -20,6 +22,19 @@
         let image = new Bed.image(layer1)
         let text = new Bed.text(layer1)
         
+
+        let animatedImgae = new Bed.image(layer1)
+        animatedImgae.spriteSheet('./lib/logo_sheet.png')
+
+        animatedImgae.newAnimation('red', [ [0,0] ]);
+        animatedImgae.newAnimation('blue', [ [1,0] ]);
+        animatedImgae.newAnimation('green', [ [0,1] ]);
+        animatedImgae.newAnimation('orange', [ [1,1] ]);
+        animatedImgae.newAnimation('rgb', [ [0,0], [0,1], [1,0] ], 15);
+
+
+        animatedImgae.setAnimation('rgb');
+
         Bed.everyTick(()=>{
             image.x++
         })
