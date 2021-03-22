@@ -7,9 +7,9 @@
 
 
 BedJS 0.3:
-[*] Image animations
-[*] Console notification that BedJS started
-[*] Fixed Bugs 
+* Image animations
+* Console notification that BedJS started
+* Fixed Bugs 
 
 
 # English
@@ -41,6 +41,80 @@ document.body.appendChild(Bed.domElement);
 
 Bed.start();
 ```
+
+## Layers
+Layers in BedJS are created through the constructor:
+
+```js
+var Layer = new Bed.layer();
+```
+
+The constructor takes obj as an optional parameter
+
+Obj itself can be written
+```js
+Bed.layer({
+    transperent: true,
+    backgroundColor: 'white',
+    visible: true
+});
+```
+
+* transperent - whether the background of the layer is transparent
+* backgroundColor - background color (if transperent = false)
+* visible - whether the layer is rendered
+
+All parameters can be changed in real time
+Example:
+
+```js
+var Layer1 = new Bed.layer()
+
+Layer1.backgroundColor = '#ff2'
+Layer1.transperent = false
+```
+
+## Sprites
+There are several types of sprites in BedJS:
+
+### Rect
+
+```js
+var rect = new Bed.rect(lay);
+```
+
+rect is the constructor taking the layer and obj as an optional parameter
+
+obj itself can be written:
+
+```js
+Bed.rect(Layer1, {
+    x: 0,
+    y: 0,
+    width: 100,
+    height: 100,
+    color: 'black',
+    visible: true
+});
+```
+
+* x - float, position x
+* y - float, y position
+* width - float, width
+* height - float, height
+* color - string, accepts css-style color, ('red', '# fff', '# ffff33', '# ffff3310', 'rgb (255,255,255)', 'rgba (255,255,255,1)')
+* visible - bool, accepts true or false, if true - the sprite is rendering, false - not rendering
+
+All parameters can be changed in real time
+Example:
+
+```js
+var rect = new Bed.rect();
+Bed.everyTick(()=>{
+    rect.x++
+});
+```
+
 
 # Russian
 
