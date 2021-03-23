@@ -18,26 +18,31 @@
         document.body.appendChild(Bed.domElement)
 
         const layer1 = new Bed.layer()
+        const layer2 = new Bed.layer(
+            {
+                paralaxX: 0,
+                paralaxY: 0
+            }
+        )
 
-        let text = new Bed.text(layer1, {
-            words: '0.4 TileMaps!'
-        })
-        
-
-        let TileMap = new Bed.tilemap(layer1,
-        {
-            tiles:[
-                [Bed.vec2(0,1), Bed.vec2(0,1), Bed.vec2(0,1), Bed.vec2(0,1)],
-                [Bed.vec2(1,0), Bed.vec2(1,0), Bed.vec2(1,0), Bed.vec2(1,0)],
-                [Bed.vec2(0,0), Bed.vec2(0,0), Bed.vec2(0,0), Bed.vec2(0,0)],
-                [Bed.vec2(1,1), Bed.vec2(1,1), Bed.vec2(1,1), Bed.vec2(1,1)]
-            ],
+        let text = new Bed.text(layer2, {
+            words: '0.5 Layer paralax and camera scroll!',
             y:25
         })
 
+        let image = new Bed.image(layer1, {
+            y: 200,
+            x: 200
+        })
+        
+
+        
+
         
         Bed.everyTick(()=>{
-            console.log('tick')
+            Bed.setScroll( Bed.vec2(Bed.getScroll().x + 1, Bed.getScroll().y + 1) )
+            
+            //console.log(Bed.getScroll())
         })
         
         

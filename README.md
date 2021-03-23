@@ -6,6 +6,10 @@
  [English](https://github.com/Dimidroll06/BedJS/blob/main/README.md#English)
 
 
+BedJS 0.5:
+ * added ScrollX and ScrollY of camera
+ * added ParalaxX and ParalaxY for layers
+
 BedJS 0.4:
 * Added TileMaps
 * Fixed Bugs 
