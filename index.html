@@ -18,35 +18,29 @@
         document.body.appendChild(Bed.domElement)
 
         const layer1 = new Bed.layer()
-        const layer2 = new Bed.layer(
-            {
-                paralaxX: 0,
-                paralaxY: 0
-            }
-        )
 
-        let text = new Bed.text(layer2, {
-            words: '0.5 Layer paralax and camera scroll!',
-            y:25
+        let text = new Bed.text(layer1, {
+            words: '0.6 Destroy!'
         })
 
         let image = new Bed.image(layer1, {
-            y: 200,
-            x: 200
+            y: 20
         })
         
 
-        
+        setTimeout(() => {
+            image.destroy()
+        }, 500);
 
-        
-        Bed.everyTick(()=>{
-            Bed.setScroll( Bed.vec2(Bed.getScroll().x + 1, Bed.getScroll().y + 1) )
-            
-            //console.log(Bed.getScroll())
-        })
-        
-        
-      
+        setTimeout(() => {
+            text.destroy()
+            setTimeout(() => {
+                text = new Bed.text(layer1, {
+                words: 'Text and image destroyed'
+                })
+            }, 1000);
+        }, 1000);
+
         Bed.start()
 
         </script>
