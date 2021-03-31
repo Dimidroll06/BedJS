@@ -4,45 +4,48 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="./lib/logo.png" type="image/x-icon">
-    <title>BedJS test</title>
-
-    <!-- BED JS -->
+    <title>Document</title>
     <script src="./lib/Bed.js"></script>
+    <script src="./lib/plugins/image.js"></script>
+    <style>
+        body{
+            margin: 0;
+        }
+    </style>
 </head>
 <body>
+    
     <script>
-        const Bed = new BedJS({
-            FPS:1
-        })
+        var Bed = new BedJS({
+            width:  600,
+            height: 400
+        });
         document.body.appendChild(Bed.domElement)
-
-        const layer1 = new Bed.layer()
-
-        let text = new Bed.text(layer1, {
-            words: '0.6 Destroy!'
-        })
-
-        let image = new Bed.image(layer1, {
-            y: 20
-        })
+        Bed.init();
         
+        var Layer1 = new Bed.layer({
+            paralax:     new Vector2(1, 1),
+            BGcolor:     new rgb(255, 255, 255),
+            opacity:     1,
+            transperent: false,
+            visible:     true
 
-        setTimeout(() => {
-            image.destroy()
-        }, 500);
+        });
 
-        setTimeout(() => {
-            text.destroy()
-            setTimeout(() => {
-                text = new Bed.text(layer1, {
-                words: 'Text and image destroyed'
-                })
-            }, 1000);
-        }, 1000);
+        // var Cube = new Bed.rect(Layer1, {
+        //     position: new Vector2(0, 0),
+        //     size:     new Vector2(100, 100),
+        //     color:    new rgb(255, 0, 0),
+        //     opacity:  1,
+        //     visible:  true
+        // });
 
-        Bed.start()
+        Bed.pluginLoad(ImageBedJS, "image");
+        const ImageP = Bed.plugin("image");
 
-        </script>
+        var BedImg = ImageP(Layer1)
+
+
+    </script>
 </body>
 </html>
