@@ -7,6 +7,8 @@
     <title>Document</title>
     <script src="./lib/Bed.js"></script>
     <script src="./lib/plugins/image.js"></script>
+    <script src="./lib/plugins/animatedSprite.js"></script>
+    <script src="./lib/plugins/text.js"></script>
     <style>
         body{
             margin: 0;
@@ -25,7 +27,7 @@
         
         var Layer1 = new Bed.layer({
             paralax:     new Vector2(1, 1),
-            BGcolor:     new rgb(255, 255, 255),
+            BGcolor:     new RGB(255, 255, 255),
             opacity:     1,
             transperent: false,
             visible:     true
@@ -35,16 +37,27 @@
         // var Cube = new Bed.rect(Layer1, {
         //     position: new Vector2(0, 0),
         //     size:     new Vector2(100, 100),
-        //     color:    new rgb(255, 0, 0),
+        //     color:    new RGB(255, 0, 0),
         //     opacity:  1,
         //     visible:  true
         // });
 
-        Bed.pluginLoad(ImageBedJS, "image");
-        const ImageP = Bed.plugin("image");
+        Bed.pluginLoad(animatedSpriteBedJS, "animatedSprite");
+        Bed.pluginLoad(textBedJS,           "txt");
+        const animatedSprite = Bed.plugin("animatedSprite");
+        const txt            = Bed.plugin("txt");
 
-        var BedImg = ImageP(Layer1)
-
+        var BedAnimatedSprite = new animatedSprite(Layer1)
+        var BedText  = new txt(Layer1, {
+            position: new Vector2(64, 5)
+        })
+        var Bed2Text = new txt(Layer1,{
+            position: new Vector2(50, 50),
+            fontWeight:'bold',
+            fontFamily:'Calriby',
+            fontSize:28,
+            words: "First text position x is "+new String(BedText.position.x)
+        })
 
     </script>
 </body>
