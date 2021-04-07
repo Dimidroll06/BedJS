@@ -5,10 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <!-- Lib anf collisions -->
     <script src="./lib/Bed.js"></script>
+    <script src="./lib/SAT.js"></script>
+    <!-- plugins -->
     <script src="./lib/plugins/image.js"></script>
     <script src="./lib/plugins/animatedSprite.js"></script>
     <script src="./lib/plugins/text.js"></script>
+
     <style>
         body{
             margin: 0;
@@ -51,12 +55,28 @@
         var BedText  = new txt(Layer1, {
             position: new Vector2(64, 5)
         })
+
+        //Info about collisions: https://github.com/jriecken/sat-js
+        BedAnimatedSprite.mesh = new SAT.Box(BedAnimatedSprite.position, BedAnimatedSprite.size.x, BedAnimatedSprite.size.y);
+        BedAnimatedSprite.everyTick(()=>{
+            BedAnimatedSprite.position.x++
+            BedAnimatedSprite.mesh.pos = BedAnimatedSprite.position
+        })
+        BedText.mesh = new SAT.Box(BedText.position, BedText.fontSize*BedText.words.length/2, BedText.fontSize);
+        BedText.everyTick(()=>{
+            BedText.mesh.pos = BedText.position
+        })
+
         var Bed2Text = new txt(Layer1,{
             position: new Vector2(50, 50),
             fontWeight:'bold',
             fontFamily:'Calriby',
             fontSize:28,
             words: "First text position x is "+new String(BedText.position.x)
+        })
+        Bed2Text.everyTick(()=>{
+
+            Bed2Text.words = SAT.testPolygonPolygon(BedAnimatedSprite.mesh.toPolygon(), BedText.mesh.toPolygon())?"Text and Sprite are collide!":"Nothing happends"
         })
 
     </script>
