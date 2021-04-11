@@ -1,0 +1,2 @@
+var WIDTH = 350
+var HEIGHT = 600
