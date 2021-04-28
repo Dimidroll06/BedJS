@@ -2,10 +2,80 @@
  * @param  {Number} x x position from 0 to infinity
  * @param  {Number} y y position from 0 to infinity
  */
-var Vector2 = function(x, y){
+ var Vector2 = function(x=0, y=0){
     this.x = x;
     this.y = y;
     this.type = "Vector2";
+
+    this.add = (a=0, b=0)=>{
+        if(typeof a === 'object' && a.type == "Vector2"){
+            this.x+=a.x
+            this.y+=a.y
+        }else if(typeof a === 'number' && typeof b === 'number'){
+            this.x+=a
+            this.y+=b
+        }
+
+        return this
+    }
+
+    this.subtract = (a=0, b=0)=>{
+        if(typeof a === 'object' && a.type == "Vector2"){
+            this.x-=a.x
+            this.y-=a.y
+        }else if(typeof a === 'number' && typeof b === 'number'){
+            this.x-=a
+            this.y-=b
+        }
+
+        return this
+    }
+
+    this.dvide = (a=0, b=0)=>{
+        if(typeof a === 'object' && a.type == "Vector2"){
+            this.x/=a.x
+            this.y/=a.y
+        }else if(typeof a === 'number' && typeof b === 'number'){
+            this.x/=a
+            this.y/=b
+        }
+
+        return this
+    }
+
+    this.multiply = (a=0, b=0)=>{
+        if(typeof a === 'object' && a.type == "Vector2"){
+            this.x*=a.x
+            this.y*=a.y
+        }else if(typeof a === 'number' && typeof b === 'number'){
+            this.x*=a
+            this.y*=b
+        }
+
+        return this
+    }
+
+
+    // Vector deep math
+
+    //magnitude
+    this.mag = ()=>{
+        return sqrt(this.x*this.x + this.y*this.y);
+    };
+
+    //vector normilize
+    this.normilize = ()=>{
+        this.x = this.x!=0?this.x / Math.abs(this.x):0
+        this.y = this.y!=0?this.y / Math.abs(this.y):0
+
+        var mag = this.mag()
+
+        if(this.mag!=0){
+            this.dvide(mag)
+        }
+
+        return this
+    }
 };
 /**
  * @param  {Number} r Red from 0 to 255
